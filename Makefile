@@ -1,20 +1,9 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maskedduck <maskedduck@student.42.fr>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
-#    Updated: 2021/09/16 15:53:20 by maskedduck       ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME = so_long
 CC = gcc
 INC = so_long.h
 OPENGL = -lXext -lX11 -lbsd -lm
-
+FLAGS = -Iminilibx-linux
 -fsanitize=address
 
 SRCS =	so_long.c		\
