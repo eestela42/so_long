@@ -1,9 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: maskedduck <maskedduck@student.42.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
+#    Updated: 2021/09/16 15:53:20 by maskedduck       ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = so_long
 CC = gcc
 INC = so_long.h
 OPENGL = -lXext -lX11 -lbsd -lm
-FLAGS = -Iminilibx-linux
+
 -fsanitize=address
 
 SRCS =	so_long.c		\
@@ -27,11 +38,33 @@ SRCS =	so_long.c		\
 
 OBJS = $(SRCS:.c=.o)
 
+MACOS_MACRO = -D MACOS
+
+LINUX_MACRO = -D LINUX
+
+MACOS_FLAGS	= -L minilibx_opengl_20191021 -lmlx -framework OpenGL -framework AppKit 
+
+LINUX_FLAGS = -L minilibx-linux -lmlx -lm -lX11 -lXext -lpthread
+
+ifeq ($(UNAME),Darwin)
+	NUM_THREADS = $(shell sysctl -n hw.ncpu)
+	CFLAGS += $(MACOS_MACRO)
+	FLAGS += $(MACOS_FLAGS)
+endif
+ifeq ($(UNAME),Linux)
+	NUM_THREADS = $(shell nproc --all)
+	CFLAGS += $(LINUX_MACRO)
+	FLAGS += $(LINUX_FLAGS)
+endif
+
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-		make -C minilibx-linux
-		$(CC) -o $(NAME) $(OBJS) $(FLAGS) minilibx-linux/libmlx.a $(OPENGL)
+				@make -C ./minilibx_mms
+				@make -C ./minilibx_opengl
+				@cp ./minilibx_mms/libmlx.dylib libmlx.dylib
+				@cp ./minilibx_opengl/libmlx.a libmlx.a
+		$(CC) -o $(NAME) $(OBJS) $(FLAGS) $(OPENGL)
 
 $(OBJS):	$(SRCS) $(INC)
 		$(CC) $(FLAGS) -c $(SRCS)
@@ -43,3 +76,5 @@ fclean: clean
 		rm -f $(NAME)
 
 re:		fclean all
+
+.PHONY:	all bonus clean fclean re

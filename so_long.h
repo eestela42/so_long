@@ -7,11 +7,10 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
-//# include <mlx.h>
-//# include "minilibx-linux/mlx.h"
-//# include "minilibx_opengl_20191021/mlx.h"
+# include "minilibx-linux/mlx.h"
+# include "minilibx_opengl_20191021/mlx.h"
+//# include <X11/X.h>
+//# include <X11/keysym.h>
 
 typedef struct	s_map
 {
