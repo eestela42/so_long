@@ -31,13 +31,15 @@ int		key_pressed(int key, t_mast *ee)
 {
 	void	(*key_pr[200])(t_mast *ee);
 
-	if (key > 199 && key != 65307)
+	/*if (key > 199 && key != 65307)
 	{
 		ee->secu = -4;
 		ft_end(ee);
 	}
+	
 	else if (key == 65307)
 		key_esc(ee);
+		*/
 	find_p(ee);
 	init_key(key_pr);
 	key_pr[key](ee);
