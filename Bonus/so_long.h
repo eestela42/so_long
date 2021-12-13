@@ -9,9 +9,6 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-//# include <mlx.h>
-//# include "minilibx-linux/mlx.h"
-//# include "minilibx_opengl_20191021/mlx.h"
 
 typedef struct	s_map
 {
@@ -85,7 +82,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
-int				ft_map(t_map *map);
+int				ft_map(t_map *map, char *read_map);
 int				ft_convert(t_sprite *sp, void *ptr);
 t_mast			ft_display(t_mast ee);
 

@@ -26,7 +26,7 @@ void	error(int i)
 	if (i == 63)
 		printf("Error in convert Sprite\n");
 	if (i == -4)
-		printf("Unknown Key pressed\n");
+		printf("ERROR IN MAP NAME\n");
 	if (i == 666)
-		printf("YoU HAVE DIED\n");
+		printf("You HAVE DIED\n");
 }

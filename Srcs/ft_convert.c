@@ -15,9 +15,7 @@ int		ft_convert(t_sprite *sp, void *ptr)
 {
 	int	i;
 	int	j;
-	int	y;
 
-	//sp->P = mlx_xpm_file_to_image (ptr, "./sp_dj/player_left.xpm", &i, &j);
 	sp->Pl = mlx_xpm_file_to_image (ptr, "./sp_dj/player_left.xpm", &i, &j);
 	sp->Pr = mlx_xpm_file_to_image (ptr, "./sp_dj/player_right.xpm", &i, &j);
 	sp->Pu = mlx_xpm_file_to_image (ptr, "./sp_dj/player_up.xpm", &i, &j);

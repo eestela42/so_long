@@ -1,12 +1,10 @@
-
 NAME = so_long
-CC = gcc
+CC = clang
 INC = so_long.h
 OPENGL = -lXext -lX11 -lbsd -lm
-FLAGS = -Iminilibx-linux
--fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
 
-SRCS =	so_long.c		\
+SRCS = so_long.c		\
 		ft_map.c 		\
 		utils.c			\
 		ft_convert.c	\
@@ -25,21 +23,43 @@ SRCS =	so_long.c		\
 		error.c			\
 		ft_free_img.c
 
-OBJS = $(SRCS:.c=.o)
+SRCS_BONUS = 	so_long_bonus.c			\
+				ft_map_bonus.c 			\
+				utils_bonus.c			\
+				ft_convert_bonus.c		\
+				ft_display_bonus.c		\
+				put_sprites1_bonus.c	\
+				put_sprites2_bonus.c	\
+				put_num1_bonus.c		\
+				put_num2_bonus.c		\
+				ft_counter_bonus.c		\
+				key_mv_bonus.c			\
+				key_close_bonus.c		\
+				init_tab_bonus.c		\
+				ft_window_bonus.c		\
+				ft_guard_bonus.c		\
+				ft_generate_bonus.c		\
+				error_bonus.c			\
+				ft_free_img_bonus.c
+
+OBJS = ${addprefix Srcs/,${SRCS:.c=.o}}
+OBJS_BONUS = ${addprefix Bonus/,${SRCS_BONUS:.c=.o}}
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
 		make -C minilibx-linux
-		$(CC) -o $(NAME) $(OBJS) $(FLAGS) minilibx-linux/libmlx.a $(OPENGL)
+		$(CC)  $(OBJS) $(FLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
 
-$(OBJS):	$(SRCS) $(INC)
-		$(CC) $(FLAGS) -c $(SRCS)
-
+bonus:	$(OBJS_BONUS)
+		make -C minilibx-linux
+		$(CC) $(OBJS_BONUS) $(FLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
 clean:
-		rm -f $(OBJS)
+		rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 		rm -f $(NAME)
 
 re:		fclean all
+
+.PHONY:	all bonus clean fclean re

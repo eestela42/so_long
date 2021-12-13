@@ -4,7 +4,6 @@ int	ft_end(t_mast *ee)
 {
 	int		i;
 	void	*img;
-	void	*tmp;
 
 	i = 0;
 	img = ee->sp->Pl;
@@ -27,10 +26,19 @@ int	ft_end(t_mast *ee)
 	return(0);
 }
 
-int	main()
+int	main(int ac, char **av)
 {
 	t_mast	ee;
 
+	if (ac != 2 || ft_strlen(av[1]) < 5
+	|| av[1][ft_strlen(av[1]) - 4] != '.'
+	|| av[1][ft_strlen(av[1]) - 3] != 'b'
+	|| av[1][ft_strlen(av[1]) - 2] != 'e'
+	|| av[1][ft_strlen(av[1]) - 1] != 'r')
+	{
+		printf("NO MAP\n");
+		return(-1);
+	}
 	ee.map = malloc(sizeof(t_map));
 	ee.sp = malloc(sizeof(t_sprite));
 	if(!ee.map)
@@ -38,7 +46,7 @@ int	main()
 	ee.win = NULL;
 	ee.mlx = mlx_init();
 	ee.secu = ft_convert(ee.sp, ee.mlx);
-	ee.secu = ft_map(ee.map);
+	ee.secu = ft_map(ee.map, av[1]);
 	ft_generate(ee.map);
 	if (ee.secu || !ee.mlx)
 		ft_end(&ee);

@@ -9,7 +9,6 @@ void	ft_generate(t_map *map)
 
 	c = 0;
 	x = 0;
-	printf("l = %i || w = %i\n", map->l, map->w);
 	while (x < map->w)
 	{
 		y = 0;
@@ -18,7 +17,6 @@ void	ft_generate(t_map *map)
 			if (map->map[x][y] == '0')
 		{
 			i = (x + 1 * y + 1 * map->l * map->w + c) % 59;
-			printf("i = %i\n", i);
 			if (i == 64 && map->map[x][y - 1] != 'P')
 				map->map[x][y] = '<';	
 			else if (i == 28 && map->map[x + 1][y] != 'P')

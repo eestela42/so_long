@@ -2,6 +2,7 @@
 
 void	mv_none(t_mast *ee)
 {
+	(void)ee;
 	return;
 }
 
