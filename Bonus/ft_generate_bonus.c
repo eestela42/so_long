@@ -6,11 +6,11 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:53:35 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 16:08:06 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:17:58 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_generate(t_map *map, int c, int x, int i)
 {

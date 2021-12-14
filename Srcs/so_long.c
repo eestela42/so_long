@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:15:42 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 15:37:28 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:09:47 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@ int	ft_end(t_mast *ee)
 		mlx_destroy_window(ee->mlx, ee->win);
 	if (ee->sp)
 		free(ee->sp);
-	if (ee->map->map)
+	mlx_destroy_display(ee->mlx);
+	free(ee->mlx);
+	if (ee->map && ee->map->map)
 	{
 		i = 0;
 		while (i < ee->map->w)
 			free(ee->map->map[i++]);
 		free(ee->map->map);
+		free(ee->map);
 	}
 	i = 0;
 	error(ee->secu);
 	exit(1);
-	return (0);
 }
 
 int	main(int ac, char **av)

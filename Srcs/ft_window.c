@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:22:53 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 11:34:30 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:12:10 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int	ft_win(t_mast ee)
 		}
 		y++;
 	}
-	printf("%i mooves\n", ee.mv);
+	printf("%i moves\n", ee.mv);
 	return (0);
 }

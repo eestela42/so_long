@@ -6,11 +6,11 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:22:53 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 16:14:42 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:18:11 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	where_win(t_mast *ee)
 {

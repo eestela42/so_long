@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display.c                                       :+:      :+:    :+:   */
+/*   ft_display_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:20:15 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 11:17:57 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:17:52 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	*r_ground(t_mast *ee)
 {
@@ -71,7 +71,6 @@ t_mast	ft_display(t_mast ee)
 	ee.win = mlx_new_window(ee.mlx, win_l(ee.map->l),
 			win_w(ee.map->w), "so_long");
 	ee.secu = ft_win(ee);
-	printf("out of ft_win\n");
 	mlx_hook(ee.win, ClientMessage, NoEventMask, ft_end, &ee);
 	mlx_key_hook (ee.win, key_pressed, &ee);
 	mlx_loop(ee.mlx);
