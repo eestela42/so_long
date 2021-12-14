@@ -14,16 +14,13 @@ int			check_W(t_map *map)
 	while (k < map->w)
 	{
 		i = 0;
-		if (ft_strlen(map->map[k]) != map->l)
+		if ((int)ft_strlen(map->map[k]) != map->l)
 			return(7);
 		while (map->map[k][i])
 		{
 			if (((k == 0 || k == map->w) || (i == 0 ||
 			i == map->l)) && map->map[k][i] != '1')
-			{
-				printf("k = %i  w = %i  i = %i  l = %i  char =%c", k, map->w, i, map->l, map->map[k][i]);
 				return (6);
-			}
 			i++;
 		}
 		k++;
@@ -51,9 +48,7 @@ int			check_L(t_map *map, int width)
 					map->E++;
 				else if (map->map[k][i] == 'P')
 					map->P++;
-				else if (map->map[k][i] == '1' || map->map[k][i] == '0' ||
-				map->map[k][i] == '<' || map->map[k][i] == '>' || map->map[k][i] == '^' ||
-				map->map[k][i] == 'v')
+				else if (map->map[k][i] == '1' || map->map[k][i] == '0')
 					;
 				else
 					return (-1);
@@ -109,7 +104,7 @@ int			cut(t_map *map, char *str)
 	return(check_L(map, k));
 }
 
-int			ft_map(t_map *map)
+int			ft_map(t_map *map, char *read_map)
 {
 	char	*buff;
 	char	*mem;
@@ -122,7 +117,13 @@ int			ft_map(t_map *map)
 	if (!(buff))
 		return(1);
 	mem = ft_strdup("");
-	fd = open("./map.ber", O_RDONLY);
+	fd = open(read_map, O_RDONLY);
+	if (fd == -1)
+	{
+		free(mem);
+		free(buff);
+		return (-4);
+	}
 	i = 0;
 	while ((r = read(fd, buff, 1024)) > 0)
 	{

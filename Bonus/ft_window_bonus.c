@@ -64,7 +64,7 @@ int		ft_win(t_mast ee)
 		while (x < ee.map->l && x < ee.x + 32)
 		{
 			
-			ee.disp[ee.map->map[y][x]](&ee, (x - ee.x) * 32, (y - ee.y) * 32);
+			ee.disp[(int)ee.map->map[y][x]](&ee, (x - ee.x) * 32, (y - ee.y) * 32);
 			x++;
 		};
 		y++;
