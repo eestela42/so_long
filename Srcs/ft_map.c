@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:51:21 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 11:07:50 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:43:37 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,13 @@ int	check_w(t_map *map)
 	return (0);
 }
 
-int	check_l(t_map *map, int width)
+int	check_l(t_map *map, int width, int k)
 {
-	int		k;
 	int		i;
 
 	map->c = 0;
 	map->e = 0;
 	map->p = 0;
-	k = 0;
 	while (k < width)
 	{
 		i = 0;
@@ -60,9 +58,7 @@ int	check_l(t_map *map, int width)
 				map->e++;
 			else if (map->map[k][i] == 'P')
 				map->p++;
-			else if (map->map[k][i] == '1' || map->map[k][i] == '0')
-				;
-			else
+			else if (map->map[k][i] != '1' && map->map[k][i] != '0')
 				return (-1);
 			i++;
 		}
@@ -95,7 +91,7 @@ int	cut(t_map *map, char *str)
 
 	if (!str)
 		return (2);
-	map->map = malloc(sizeof(char*) * (ft_count(str, '\n') + 1));
+	map->map = malloc(sizeof(char *) * (ft_count(str, '\n') + 1));
 	if (!map)
 		return (3);
 	i = 0;
@@ -113,16 +109,13 @@ int	cut(t_map *map, char *str)
 		i++;
 	}
 	free(str);
-	return (check_l(map, k));
+	return (check_l(map, k, 0));
 }
 
 int	ft_map(t_map *map, char *read_map)
 {
 	char	*buff;
 	char	*mem;
-	char	*tmp;
-	int		i;
-	int		r;
 	int		fd;
 
 	buff = malloc(sizeof(char) * 1025);
@@ -136,18 +129,7 @@ int	ft_map(t_map *map, char *read_map)
 		free(buff);
 		return (-4);
 	}
-	i = 0;
-	while ((r = read(fd, buff, 1024)) > 0)
-	{
-		buff[r] = 0;
-		i += r;
-		tmp = mem;
-		mem = ft_strjoin(mem, buff);
-		free(tmp);
-		if (!mem)
-			break ;
-	}
+	mem = ft_reader(fd, buff, mem);
 	close(fd);
-	free(buff);
 	return (cut(map, mem));
 }

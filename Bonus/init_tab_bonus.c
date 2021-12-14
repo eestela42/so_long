@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_tab.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 11:02:08 by eestela           #+#    #+#             */
+/*   Updated: 2021/12/14 11:03:10 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	init_disp(void (*disp[128])(t_mast *ee, int x, int y))
@@ -5,15 +17,15 @@ void	init_disp(void (*disp[128])(t_mast *ee, int x, int y))
 	int	i;
 
 	i = 0;
-	disp['P'] = put_P;
-	disp['C'] = put_C;
-	disp['E'] = put_E;
-	disp['0'] = put_G;
-	disp['1'] = put_W1;
-	disp['^'] = put_Gup;
-	disp['v'] = put_Gdown;
-	disp['<'] = put_Gleft;
-	disp['>'] = put_Gright;
+	disp['P'] = put_p;
+	disp['C'] = put_c;
+	disp['E'] = put_e;
+	disp['0'] = put_g;
+	disp['1'] = put_w1;
+	disp['^'] = put_gup;
+	disp['v'] = put_gdown;
+	disp['<'] = put_gleft;
+	disp['>'] = put_gright;
 	disp[i++] = put_zero;
 	disp[i++] = put_one;
 	disp[i++] = put_two;
@@ -29,7 +41,7 @@ void	init_disp(void (*disp[128])(t_mast *ee, int x, int y))
 void	init_key(void (*key_pr[200])(t_mast *ee))
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 200)
 		key_pr[i++] = mv_none;
@@ -44,5 +56,5 @@ void	init_guard(void (*guard_moove[128])(t_mast *ee, int x, int y))
 	guard_moove['^'] = guard_up;
 	guard_moove['v'] = guard_down;
 	guard_moove['>'] = guard_right;
-	guard_moove['<'] = guard_left;	
+	guard_moove['<'] = guard_left;
 }

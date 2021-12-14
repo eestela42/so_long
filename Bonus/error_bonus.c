@@ -1,8 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/14 10:44:26 by eestela           #+#    #+#             */
+/*   Updated: 2021/12/14 10:44:58 by eestela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
+
+void	error1(int i)
+{
+	if (i == 63)
+		printf("Error in convert Sprite\n");
+	if (i == -4)
+		printf("ERROR IN MAP NAME\n");
+	if (i == 666)
+		printf("You HAVE DIED\n");
+}
 
 void	error(int i)
 {
-	if	(i == 0 || i == 12)
+	if (i == 0 || i == 12)
 		return ;
 	printf("Error\n");
 	if (i == 1)
@@ -23,10 +45,5 @@ void	error(int i)
 		printf("Error in Map\n");
 	if (i == 7)
 		printf("Map is not rectangular\n");
-	if (i == 63)
-		printf("Error in convert Sprite\n");
-	if (i == -4)
-		printf("ERROR IN MAP NAME\n");
-	if (i == 666)
-		printf("You HAVE DIED\n");
+	error1(i);
 }

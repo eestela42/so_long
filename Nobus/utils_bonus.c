@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:54:21 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 10:54:42 by eestela          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -24,7 +12,7 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*pointer;
+	char *pointer;
 
 	pointer = (char *)s;
 	while (*pointer != '\0')

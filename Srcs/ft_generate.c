@@ -6,22 +6,17 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:53:35 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 10:53:50 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:51:35 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_generate(t_map *map)
+void	ft_generate(t_map *map, int c, int x, int i)
 {
-	int	i;
-	int	x;
 	int	y;
-	int	c;
 
-	c = 0;
-	x = 0;
-	while (x < map->w)
+	while (x++ < map->w)
 	{
 		y = 0;
 		while (y < map->l)
@@ -41,6 +36,5 @@ void	ft_generate(t_map *map)
 			}
 			y++;
 		}
-		x++;
 	}
 }

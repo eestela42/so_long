@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_guard.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:24:20 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 10:27:09 by eestela          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 void	guard_up(t_mast *ee, int x, int y)
@@ -76,6 +64,30 @@ void	guard_right(t_mast *ee, int x, int y)
 		ee->map->map[x][y] = 'a';
 }
 
+void	clear_save(t_mast *ee)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < ee->map->w)
+	{
+		y = 0;
+		while (y < ee->map->l)
+		{
+			if (ee->map->map[x][y] == 'w')
+				ee->map->map[x][y] = '^';
+			if (ee->map->map[x][y] == 'a')
+				ee->map->map[x][y] = '<';
+			if (ee->map->map[x][y] == 'd')
+				ee->map->map[x][y] = '>';
+			if (ee->map->map[x][y] == 's')
+				ee->map->map[x][y] = 'v';
+			y++;
+		}
+		x++;
+	}
+}
 void	ft_guard(t_mast *ee)
 {
 	int	x;

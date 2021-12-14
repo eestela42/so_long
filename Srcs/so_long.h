@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:56:57 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 11:00:51 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 15:52:12 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 int				ft_map(t_map *map, char *read_map);
+char			*ft_reader(int fd, char *buff, char *mem);
 int				ft_convert(t_sprite *sp, void *ptr);
 t_mast			ft_display(t_mast ee);
 
@@ -137,7 +138,7 @@ void			clear_save(t_mast *ee);
 void			init_disp(void (*disp[128])(t_mast *ee, int x, int y));
 void			init_key(void (*key_pr[200])(t_mast *ee));
 void			init_guard(void (*guard_moove[128])(t_mast *ee, int x, int y));
-void			ft_generate(t_map *map);
+void			ft_generate(t_map *map, int c, int x, int i);
 void			find_p(t_mast *ee);
 
 void			where_win(t_mast *ee);

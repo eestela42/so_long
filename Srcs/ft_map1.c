@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_close.c                                        :+:      :+:    :+:   */
+/*   ft_map1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 10:21:09 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 10:21:11 by eestela          ###   ########.fr       */
+/*   Created: 2021/12/14 15:32:21 by eestela           #+#    #+#             */
+/*   Updated: 2021/12/14 15:41:31 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	key_esc(t_mast *ee)
+char	*ft_reader(int fd, char *buff, char *mem)
 {
-	ee->secu = 12;
-	ft_end(ee);
+	int		r;
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	r = read(fd, buff, 1024);
+	while (r > 0)
+	{
+		buff[r] = 0;
+		i += r;
+		tmp = mem;
+		mem = ft_strjoin(mem, buff);
+		free(tmp);
+		if (!mem)
+			break ;
+		r = read(fd, buff, 1024);
+	}
+	free(buff);
+	return (mem);
 }
