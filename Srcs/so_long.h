@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:56:57 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 15:52:12 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/14 17:57:10 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include <mlx.h>
+# include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 

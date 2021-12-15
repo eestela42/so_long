@@ -6,15 +6,14 @@
 #    By: eestela <eestela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
-#    Updated: 2021/12/14 15:57:17 by eestela          ###   ########.fr        #
+#    Updated: 2021/12/14 18:03:20 by eestela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = clang
-INC = so_long.h
 OPENGL = -lXext -lX11 -lbsd -lm
-CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -ISrcs -IBonus
 
 SRCS = error.c				\
 		ft_convert.c		\
@@ -65,11 +64,13 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 		make -C minilibx-linux
-		$(CC)  $(OBJS) $(FLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
+		$(CC)  $(OBJS) $(CFLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
 
 bonus:	$(OBJS_BONUS)
+		echo $(OBJS_BONUS)
 		make -C minilibx-linux
-		$(CC) $(OBJS_BONUS) $(FLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
+		$(CC) $(OBJS_BONUS) $(CFLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
+
 clean:
 		rm -f $(OBJS) $(OBJS_BONUS)
 

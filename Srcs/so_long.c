@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:15:42 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 17:09:47 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/15 15:50:36 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	ft_end(t_mast *ee)
 		while (i < ee->map->w)
 			free(ee->map->map[i++]);
 		free(ee->map->map);
-		free(ee->map);
 	}
+	if (ee->map)
+		free(ee->map);
 	i = 0;
 	error(ee->secu);
 	exit(1);
@@ -54,6 +55,7 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	ee.map = malloc(sizeof(t_map));
+	ee.map->map = NULL;
 	ee.sp = malloc(sizeof(t_sprite));
 	if (!ee.map)
 		return (0);
