@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:51:21 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 15:43:37 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/15 19:26:20 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	check_w(t_map *map)
 			return (7);
 		while (map->map[k][i])
 		{
-			if (((k == 0 || k == map->w) || (i == 0
-						|| i == map->l)) && map->map[k][i] != '1')
+			if (((k == 0 || k == map->w - 1) || (i == 0
+						|| i == map->l -1)) && map->map[k][i] != '1')
 				return (6);
 			i++;
 		}
@@ -92,7 +92,7 @@ int	cut(t_map *map, char *str)
 	if (!str)
 		return (2);
 	map->map = malloc(sizeof(char *) * (ft_count(str, '\n') + 1));
-	if (!map)
+	if (!map->map)
 		return (3);
 	i = 0;
 	j = 0;

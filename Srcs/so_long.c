@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:15:42 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/15 15:50:36 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/15 17:45:56 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 int	ft_end(t_mast *ee)
 {
 	int		i;
-	void	*img;
 
 	i = 0;
-	img = ee->sp->pl;
 	if (ee->sp)
 		ft_free_img(ee->sp, ee->mlx);
 	if (ee->win)
 		mlx_destroy_window(ee->mlx, ee->win);
 	if (ee->sp)
 		free(ee->sp);
-	mlx_destroy_display(ee->mlx);
+	if (ee->mlx)
+		mlx_destroy_display(ee->mlx);
 	free(ee->mlx);
 	if (ee->map && ee->map->map)
 	{
@@ -57,12 +56,13 @@ int	main(int ac, char **av)
 	ee.map = malloc(sizeof(t_map));
 	ee.map->map = NULL;
 	ee.sp = malloc(sizeof(t_sprite));
-	if (!ee.map)
+	if (!ee.map || !ee.sp)
 		return (0);
 	ee.win = NULL;
 	ee.mlx = mlx_init();
 	ee.secu = ft_convert(ee.sp, ee.mlx);
-	ee.secu = ft_map(ee.map, av[1]);
+	if (!ee.secu)
+		ee.secu = ft_map(ee.map, av[1]);
 	if (ee.secu || !ee.mlx)
 		ft_end(&ee);
 	ee = ft_display(ee);

@@ -6,11 +6,12 @@
 #    By: eestela <eestela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 13:18:56 by user42            #+#    #+#              #
-#    Updated: 2021/12/14 18:03:20 by eestela          ###   ########.fr        #
+#    Updated: 2021/12/15 16:49:02 by eestela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 CC = clang
 OPENGL = -lXext -lX11 -lbsd -lm
 CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -ISrcs -IBonus
@@ -66,16 +67,18 @@ $(NAME):	$(OBJS)
 		make -C minilibx-linux
 		$(CC)  $(OBJS) $(CFLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
 
-bonus:	$(OBJS_BONUS)
-		echo $(OBJS_BONUS)
-		make -C minilibx-linux
-		$(CC) $(OBJS_BONUS) $(CFLAGS) -o $(NAME) minilibx-linux/libmlx.a $(OPENGL)
+bonus:	$(NAME_BONUS)
+
+$(NAME_BONUS):	$(OBJS_BONUS)
+				echo $(OBJS_BONUS)
+				make -C minilibx-linux
+				$(CC) $(OBJS_BONUS) $(CFLAGS) -o $(NAME_BONUS) minilibx-linux/libmlx.a $(OPENGL)
 
 clean:
 		rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-		rm -f $(NAME)
+		rm -f $(NAME) $(NAME_BONUS)
 
 re:		fclean all
 

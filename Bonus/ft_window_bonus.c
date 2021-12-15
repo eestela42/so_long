@@ -6,7 +6,7 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 10:22:53 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 17:18:11 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/15 19:14:52 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,6 @@ void	where_win(t_mast *ee)
 	}
 }
 
-void	where_win_light(t_mast *ee)
-{
-	find_p(ee);
-	if (ee->map->w > 22)
-	{
-		if (ee->p_pos[0] - 11 < 0)
-			ee->y = 0;
-		else if (ee->p_pos[0] + 11 > ee->map->w)
-			ee->y = ee->map->w - 22;
-	}
-	if (ee->map->l > 32)
-	{
-		if (ee->p_pos[1] - 16 < 0)
-			ee->x = 0;
-		else if (ee->p_pos[1] + 16 > ee->map->l)
-			ee->x = ee->map->l - 32;
-	}
-}
-
 void	put_mooves(t_mast ee, int pos, int i)
 {
 	while (ee.mv)
@@ -70,6 +51,7 @@ int	ft_win(t_mast ee)
 	int	i;
 	int	pos;
 
+	where_win(&ee);
 	y = ee.y - 1;
 	pos = 32;
 	if (ee.map->l < 32)

@@ -6,11 +6,34 @@
 /*   By: eestela <eestela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:32:21 by eestela           #+#    #+#             */
-/*   Updated: 2021/12/14 17:18:07 by eestela          ###   ########.fr       */
+/*   Updated: 2021/12/15 19:22:34 by eestela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+char	*ft_check_empty(char *mem)
+{
+	int	i;
+
+	i = 0;
+	while (mem[i])
+	{
+		if (mem[i] == '\n' && (mem[i + 1] == '\n' || mem[i + 1] == 0))
+		{
+			free(mem);
+			return (NULL);
+		}
+		if (mem[i] != '1' && mem[i] != '0' && mem[i] != 'P'
+			&& mem[i] != 'C' && mem[i] != 'E' && mem[i] != '\n')
+		{
+			free(mem);
+			return (NULL);
+		}
+		i++;
+	}
+	return (mem);
+}
 
 char	*ft_reader(int fd, char *buff, char *mem)
 {
@@ -32,5 +55,5 @@ char	*ft_reader(int fd, char *buff, char *mem)
 		r = read(fd, buff, 1024);
 	}
 	free(buff);
-	return (mem);
+	return (ft_check_empty(mem));
 }
